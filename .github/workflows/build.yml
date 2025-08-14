@@ -1,0 +1,43 @@
+name: Release
+
+on:
+  push:
+    branches:
+      - main
+
+concurrency:
+  group: release
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v4
+
+      - name: Setup node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: yarn
+
+      - name: Release
+        env:
+          EXAMPLARY_API_KEY: ${{ secrets.EXAMPLARY_API_KEY }}
+        run: |
+          # Install dependencies
+          yarn
+
+          # Loop through each subfolder in the current directory
+          for dir in */; do
+            # Skip if the directory does not contain a question-type.json file
+            if [ ! -f "$dir/question-type.json" ]; then
+              continue
+            fi
+
+            # Bundle and upload to Examplary
+            cd $dir
+            npx @examplary/question-type-bundler@latest upload --host https://api-staging.examplary.ai
+            #npx @examplary/question-type-bundler@latest upload --host https://api.examplary.ai
+            cd ..
+          done
