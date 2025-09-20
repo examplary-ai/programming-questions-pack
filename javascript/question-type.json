@@ -21,7 +21,6 @@
     "results": "./component-results.tsx"
   },
 
-  "canAutoGenerate": false,
   "isPreviewRefreshable": true,
   "timeEstimateMinutes": 15,
 
