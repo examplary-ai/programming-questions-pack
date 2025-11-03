@@ -1,11 +1,6 @@
-import {
-  FrontendQuestionSettingsAreaComponent,
-  RichTextField,
-} from "@examplary/ui";
+import { FrontendQuestionSettingsAreaComponent } from "@examplary/ui";
 
 import { CodeEditor } from "./code-editor.js";
-import { useEffect } from "react";
-// import {it, expect, run} from "jest-lite";
 
 const SettingsAreaComponent: FrontendQuestionSettingsAreaComponent = ({
   settings,
