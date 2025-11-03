@@ -48,9 +48,10 @@ const AssessmentComponent: FrontendAssessmentComponent = ({
       clearTimeout(timeout.current);
     }
 
-    setIsEvaluating(true);
+
 
     timeout.current = setTimeout(async () => {
+      setIsEvaluating(true);
       try {
         const { completed, lines } = await evaluate(
           newValue,
