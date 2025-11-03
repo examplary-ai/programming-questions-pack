@@ -10,6 +10,19 @@ export const CodeEditor = ({ value, onChange }) => {
       minHeight="90px"
       maxHeight="300px"
       extensions={[javascript()]}
+      basicSetup={{
+        lineNumbers: true,
+        highlightActiveLineGutter: true,
+        highlightActiveLine: true,
+        foldGutter: true,
+        dropCursor: true,
+        indentOnInput: true,
+        bracketMatching: true,
+        closeBrackets: true,
+        autocompletion: true,
+        rectangularSelection: true,
+        highlightSelectionMatches: true,
+      }}
     />
   );
 };
